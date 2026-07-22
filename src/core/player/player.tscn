@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://brb2mr8k8xrr2"]
 
 [ext_resource type="Script" uid="uid://bhkuka4l6m8if" path="res://src/core/player/player.gd" id="1_l8ep4"]
-[ext_resource type="Texture2D" uid="uid://dgvrwo3ylvsmo" path="res://assets/textures/test_human.png" id="2_l8ep4"]
+[ext_resource type="Texture2D" uid="uid://dxik8jedtbt5c" path="res://assets/textures/test_knight.png" id="2_l8ep4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihbif"]
-size = Vector2(5, 1)
+size = Vector2(7.5, 3.5)
 
 [node name="Player" type="CharacterBody2D" unique_id=625817118]
+collision_layer = 4
 script = ExtResource("1_l8ep4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1053543602]
-position = Vector2(-0.5, 5.5)
+position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_ihbif")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1180110459]

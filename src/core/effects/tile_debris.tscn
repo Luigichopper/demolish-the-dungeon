@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cer86rnkm3wwf"]
+
+[ext_resource type="Texture2D" uid="uid://bw6bfwoola4e5" path="res://assets/textures/rock.png" id="1_7mv42"]
+[ext_resource type="Script" uid="uid://j2sgda2bbapy" path="res://src/core/effects/tile_debris.gd" id="2_kvvye"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tihks"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 60.0
+initial_velocity_max = 120.0
+gravity = Vector3(0, 300, 0)
+scale_min = 0.099999994
+
+[node name="TileDebris" type="GPUParticles2D" unique_id=219067123]
+emitting = false
+amount = 12
+texture = ExtResource("1_7mv42")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_tihks")
+script = ExtResource("2_kvvye")
