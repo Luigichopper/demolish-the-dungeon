@@ -1,24 +1,24 @@
-# res://src/core/player/player.gd
+# player.gd
 extends CharacterBody2D
 
 const WALK_SPEED: float = 80.0
-const RUN_SPEED: float = 120.0
+const RUN_SPEED: float = 130.0
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@export var high_res_camera: Camera2D
 
 func _physics_process(_delta: float) -> void:
 	var direction := Input.get_vector("left", "right", "up", "down")
 	var speed := RUN_SPEED if Input.is_action_pressed("sprint") else WALK_SPEED
 	velocity = direction * speed
-	print(velocity)
+	
 	# Sprite flipping
 	if direction.x != 0:
 		sprite_2d.flip_h = (direction.x < 0)
 	
 	# Action calling
 	if Input.is_action_just_pressed("action") == true:
-		return
+		high_res_camera.camera_shake(0.6)
 	
 	move_and_slide()
-	
 	global_position = global_position.round()

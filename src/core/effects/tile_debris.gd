@@ -1,4 +1,4 @@
-# res://src/core/effects/tile_debris.gd
+# tile_debris.gd
 extends GPUParticles2D
 
 func _ready() -> void:
