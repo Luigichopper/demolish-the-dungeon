@@ -9,7 +9,6 @@ const RUN_SPEED: float = 100.0
 func _physics_process(_delta: float) -> void:
 	var direction := Input.get_vector("left", "right", "up", "down")
 	var speed := RUN_SPEED if Input.is_action_pressed("sprint") else WALK_SPEED
-
 	velocity = direction * speed
 	
 	# Sprite flipping
