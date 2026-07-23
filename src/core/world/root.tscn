@@ -5,6 +5,20 @@
 [ext_resource type="Script" uid="uid://bjbika5mj5di0" path="res://src/core/low_res_camera.gd" id="3_47cyu"]
 [ext_resource type="Script" uid="uid://cxkpryi2phmmu" path="res://src/core/high_res_camera2d.gd" id="4_3qrmw"]
 
+[sub_resource type="Gradient" id="Gradient_cu5cr"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y3uv6"]
+gradient = SubResource("Gradient_cu5cr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+metadata/_snap_enabled = true
+
+[sub_resource type="Environment" id="Environment_tihks"]
+background_mode = 3
+tonemap_mode = 3
+
 [node name="Root" type="Node2D" unique_id=1291699766]
 y_sort_enabled = true
 
@@ -26,14 +40,27 @@ render_target_update_mode = 4
 [node name="LowResGame" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1816497132]
 y_sort_enabled = true
 
+[node name="CanvasModulate" type="CanvasModulate" parent="SubViewportContainer/SubViewport/LowResGame" unique_id=960046670]
+color = Color(0.63866097, 0.638661, 0.63866097, 1)
+
 [node name="TestTileMap" parent="SubViewportContainer/SubViewport/LowResGame" unique_id=1310165013 instance=ExtResource("1_pbt5b")]
 
 [node name="Player" parent="SubViewportContainer/SubViewport/LowResGame" unique_id=625817118 instance=ExtResource("2_cu5cr")]
+light_mask = 2
 y_sort_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="SubViewportContainer/SubViewport/LowResGame/Player" unique_id=512799429]
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_y3uv6")
+texture_scale = 3.0
 
 [node name="LowResCamera" type="Camera2D" parent="SubViewportContainer/SubViewport/LowResGame" unique_id=1866655051 node_paths=PackedStringArray("follow_target")]
 script = ExtResource("3_47cyu")
 follow_target = NodePath("../Player")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/LowResGame" unique_id=2078773070]
+environment = SubResource("Environment_tihks")
 
 [node name="HighResCamera" type="Camera2D" parent="." unique_id=933152731 node_paths=PackedStringArray("player", "sub_viewport_container")]
 zoom = Vector2(6, 6)
