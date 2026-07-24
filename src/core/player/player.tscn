@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bhkuka4l6m8if" path="res://src/core/player/player.gd" id="1_l8ep4"]
 [ext_resource type="Texture2D" uid="uid://dxik8jedtbt5c" path="res://assets/textures/test_knight.png" id="2_l8ep4"]
+[ext_resource type="PackedScene" uid="uid://57epf6fha2e4" path="res://src/components/level_component.tscn" id="3_ae1a8"]
 [ext_resource type="PackedScene" uid="uid://d1q7j15y6cwg2" path="res://src/components/hurtbox_component.tscn" id="3_p08m5"]
 [ext_resource type="PackedScene" uid="uid://bis66f4o33uk3" path="res://src/components/hitbox_component.tscn" id="4_1wmu1"]
 [ext_resource type="PackedScene" uid="uid://duvuuoelo51lm" path="res://src/components/health_component.tscn" id="5_ae1a8"]
+[ext_resource type="Script" uid="uid://xxa7w1egy33g" path="res://src/core/states/state_machine.gd" id="6_1wmu1"]
+[ext_resource type="Script" uid="uid://bkbrem5tswsgi" path="res://src/core/player/states/idle_state.gd" id="8_31nn7"]
+[ext_resource type="Script" uid="uid://cmbxmq3kew2oo" path="res://src/core/player/states/running_state.gd" id="9_52oaf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihbif"]
 size = Vector2(7.5, 3.5)
@@ -26,8 +30,19 @@ shape = SubResource("RectangleShape2D_ihbif")
 
 [node name="Components" type="Node2D" parent="." unique_id=461952584]
 
+[node name="LevelComponent" parent="Components" unique_id=1809107560 instance=ExtResource("3_ae1a8")]
+
 [node name="HurtboxComponent" parent="Components" unique_id=1721264014 instance=ExtResource("3_p08m5")]
 
 [node name="HitboxComponent" parent="Components" unique_id=926265512 instance=ExtResource("4_1wmu1")]
 
 [node name="HealthComponent" parent="Components" unique_id=76606513 instance=ExtResource("5_ae1a8")]
+
+[node name="StateMachine" type="Node" parent="." unique_id=843525315]
+script = ExtResource("6_1wmu1")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1690427369]
+script = ExtResource("8_31nn7")
+
+[node name="Running" type="Node" parent="StateMachine" unique_id=898992258]
+script = ExtResource("9_52oaf")

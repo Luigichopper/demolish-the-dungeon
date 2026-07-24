@@ -1,5 +1,5 @@
-# res://src/core/combat/hurtbox.gd
-class_name Hurtbox
+# hurtbox_component.gd
+class_name HurtboxComponent
 extends Area2D
 
 signal hit(damage: float, source: Node)

@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://rwcbatia8pqq"]
 
+[ext_resource type="Script" uid="uid://b5hg4ehd1jpj6" path="res://src/core/enemies/enemy.gd" id="1_c6glq"]
 [ext_resource type="PackedScene" uid="uid://d1q7j15y6cwg2" path="res://src/components/hurtbox_component.tscn" id="1_dm0f1"]
 [ext_resource type="PackedScene" uid="uid://bis66f4o33uk3" path="res://src/components/hitbox_component.tscn" id="2_2kwvs"]
+[ext_resource type="PackedScene" uid="uid://57epf6fha2e4" path="res://src/components/level_component.tscn" id="2_sk1r5"]
 [ext_resource type="PackedScene" uid="uid://duvuuoelo51lm" path="res://src/components/health_component.tscn" id="3_2kwvs"]
+[ext_resource type="Script" uid="uid://xxa7w1egy33g" path="res://src/core/states/state_machine.gd" id="5_of81f"]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=409778115]
+script = ExtResource("1_c6glq")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=575026311]
 
@@ -18,10 +22,13 @@
 
 [node name="Components" type="Node2D" parent="." unique_id=150000459]
 
+[node name="LevelComponent" parent="Components" unique_id=1809107560 instance=ExtResource("2_sk1r5")]
+
 [node name="HurtboxComponent" parent="Components" unique_id=1721264014 instance=ExtResource("1_dm0f1")]
 
 [node name="HitboxComponent" parent="Components" unique_id=926265512 instance=ExtResource("2_2kwvs")]
 
 [node name="HealthComponent" parent="Components" unique_id=76606513 instance=ExtResource("3_2kwvs")]
 
-[node name="StateMachine" type="Node2D" parent="." unique_id=911862284]
+[node name="StateMachine" type="Node" parent="." unique_id=1660774325]
+script = ExtResource("5_of81f")
