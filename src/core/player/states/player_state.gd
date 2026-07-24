@@ -4,6 +4,8 @@ class_name PlayerState
 
 const IDLE = "Idle"
 const RUNNING = "Running"
+const HURT = "Hurt"
+const DEATH = "Death"
 
 var player: Player
 

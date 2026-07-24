@@ -2,6 +2,7 @@
 extends Camera2D
 
 @export var follow_target: Node2D
+
 # Camera shake variables
 @export var max_shake_offset := Vector2(40, 30)    # px
 @export var max_shake_roll := deg_to_rad(4.0)      # radians
@@ -17,6 +18,7 @@ var _noise_t := 0.0
 func _ready() -> void:
 	_noise.seed = randi()
 	_noise.frequency = 0.5
+
 
 func _process(delta: float) -> void:
 	global_position = follow_target.global_position.round()

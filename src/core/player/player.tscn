@@ -9,13 +9,24 @@
 [ext_resource type="Script" uid="uid://xxa7w1egy33g" path="res://src/core/states/state_machine.gd" id="6_1wmu1"]
 [ext_resource type="Script" uid="uid://bkbrem5tswsgi" path="res://src/core/player/states/idle_state.gd" id="8_31nn7"]
 [ext_resource type="Script" uid="uid://cmbxmq3kew2oo" path="res://src/core/player/states/running_state.gd" id="9_52oaf"]
+[ext_resource type="Script" uid="uid://dpb0nud614v67" path="res://src/core/player/states/hurt_state.gd" id="10_52oaf"]
+[ext_resource type="Script" uid="uid://burt51ajjbl8j" path="res://src/core/player/states/death_state.gd" id="11_ey5gq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihbif"]
 size = Vector2(7.5, 3.5)
 
-[node name="Player" type="CharacterBody2D" unique_id=625817118]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tihks"]
+size = Vector2(12, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_12u62"]
+size = Vector2(14, 13)
+
+[node name="Player" type="CharacterBody2D" unique_id=625817118 node_paths=PackedStringArray("state_machine", "health_component", "hurtbox_component")]
 collision_layer = 4
 script = ExtResource("1_l8ep4")
+state_machine = NodePath("StateMachine")
+health_component = NodePath("Components/HealthComponent")
+hurtbox_component = NodePath("Components/HurtboxComponent")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1320381452]
 
@@ -24,19 +35,36 @@ texture = ExtResource("2_l8ep4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals" unique_id=818675945]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1053543602]
+[node name="BaseCollision" type="CollisionShape2D" parent="." unique_id=1053543602]
 position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_ihbif")
+debug_color = Color(0.27450982, 0.627451, 0.23921569, 0.41960785)
 
 [node name="Components" type="Node2D" parent="." unique_id=461952584]
 
-[node name="LevelComponent" parent="Components" unique_id=1809107560 instance=ExtResource("3_ae1a8")]
+[node name="LevelComponent" parent="Components" unique_id=1809107560 node_paths=PackedStringArray("health_component", "hitbox_component") instance=ExtResource("3_ae1a8")]
+health_component = NodePath("../HealthComponent")
+hitbox_component = NodePath("../HitboxComponent")
 
-[node name="HurtboxComponent" parent="Components" unique_id=1721264014 instance=ExtResource("3_p08m5")]
+[node name="HealthComponent" parent="Components" unique_id=76606513 instance=ExtResource("5_ae1a8")]
+
+[node name="HurtboxComponent" parent="Components" unique_id=1721264014 node_paths=PackedStringArray("health_component") instance=ExtResource("3_p08m5")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtboxComponent" unique_id=1646388883]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_tihks")
+debug_color = Color(0.92311275, 0.23217526, 0.39353934, 0.41960785)
 
 [node name="HitboxComponent" parent="Components" unique_id=926265512 instance=ExtResource("4_1wmu1")]
 
-[node name="HealthComponent" parent="Components" unique_id=76606513 instance=ExtResource("5_ae1a8")]
+[node name="CollisionRight" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=820646411]
+position = Vector2(7, 1)
+shape = SubResource("RectangleShape2D_12u62")
+
+[node name="CollisionLeft" type="CollisionShape2D" parent="Components/HitboxComponent" unique_id=874159213]
+position = Vector2(-7, 1)
+shape = SubResource("RectangleShape2D_12u62")
 
 [node name="StateMachine" type="Node" parent="." unique_id=843525315]
 script = ExtResource("6_1wmu1")
@@ -46,3 +74,9 @@ script = ExtResource("8_31nn7")
 
 [node name="Running" type="Node" parent="StateMachine" unique_id=898992258]
 script = ExtResource("9_52oaf")
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=510783988]
+script = ExtResource("10_52oaf")
+
+[node name="Death" type="Node" parent="StateMachine" unique_id=729418766]
+script = ExtResource("11_ey5gq")

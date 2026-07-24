@@ -16,7 +16,8 @@ script = ExtResource("1_c6glq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals" unique_id=805699822]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=270557971]
+[node name="BaseCollision" type="CollisionShape2D" parent="." unique_id=270557971]
+debug_color = Color(0.27450982, 0.627451, 0.23921569, 0.41960785)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=511760713]
 
@@ -24,11 +25,11 @@ script = ExtResource("1_c6glq")
 
 [node name="LevelComponent" parent="Components" unique_id=1809107560 instance=ExtResource("2_sk1r5")]
 
+[node name="HealthComponent" parent="Components" unique_id=76606513 instance=ExtResource("3_2kwvs")]
+
 [node name="HurtboxComponent" parent="Components" unique_id=1721264014 instance=ExtResource("1_dm0f1")]
 
 [node name="HitboxComponent" parent="Components" unique_id=926265512 instance=ExtResource("2_2kwvs")]
-
-[node name="HealthComponent" parent="Components" unique_id=76606513 instance=ExtResource("3_2kwvs")]
 
 [node name="StateMachine" type="Node" parent="." unique_id=1660774325]
 script = ExtResource("5_of81f")
