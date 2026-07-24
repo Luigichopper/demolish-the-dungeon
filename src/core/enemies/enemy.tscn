@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://rwcbatia8pqq"]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=409778115]
+
+[node name="Visuals" type="Node2D" parent="." unique_id=575026311]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=1190835985]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals" unique_id=805699822]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=270557971]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=511760713]
+
+[node name="Components" type="Node2D" parent="." unique_id=150000459]
+
+[node name="StateMachine" type="Node2D" parent="." unique_id=911862284]
