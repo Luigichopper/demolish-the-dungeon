@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bhkuka4l6m8if" path="res://src/core/player/player.gd" id="1_l8ep4"]
 [ext_resource type="Texture2D" uid="uid://dxik8jedtbt5c" path="res://assets/textures/test_knight.png" id="2_l8ep4"]
+[ext_resource type="PackedScene" uid="uid://d1q7j15y6cwg2" path="res://src/components/hurtbox_component.tscn" id="3_p08m5"]
+[ext_resource type="PackedScene" uid="uid://bis66f4o33uk3" path="res://src/components/hitbox_component.tscn" id="4_1wmu1"]
+[ext_resource type="PackedScene" uid="uid://duvuuoelo51lm" path="res://src/components/health_component.tscn" id="5_ae1a8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihbif"]
 size = Vector2(7.5, 3.5)
@@ -10,9 +13,21 @@ size = Vector2(7.5, 3.5)
 collision_layer = 4
 script = ExtResource("1_l8ep4")
 
+[node name="Visuals" type="Node2D" parent="." unique_id=1320381452]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=1180110459]
+texture = ExtResource("2_l8ep4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals" unique_id=818675945]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1053543602]
 position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_ihbif")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1180110459]
-texture = ExtResource("2_l8ep4")
+[node name="Components" type="Node2D" parent="." unique_id=461952584]
+
+[node name="HurtboxComponent" parent="Components" unique_id=1721264014 instance=ExtResource("3_p08m5")]
+
+[node name="HitboxComponent" parent="Components" unique_id=926265512 instance=ExtResource("4_1wmu1")]
+
+[node name="HealthComponent" parent="Components" unique_id=76606513 instance=ExtResource("5_ae1a8")]

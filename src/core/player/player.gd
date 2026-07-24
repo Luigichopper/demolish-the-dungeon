@@ -4,7 +4,7 @@ extends CharacterBody2D
 const WALK_SPEED: float = 80.0
 const RUN_SPEED: float = 130.0
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: Sprite2D = $Visuals/Sprite2D
 @export var high_res_camera: Camera2D
 
 func _physics_process(_delta: float) -> void:

@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://rwcbatia8pqq"]
 
+[ext_resource type="PackedScene" uid="uid://d1q7j15y6cwg2" path="res://src/components/hurtbox_component.tscn" id="1_dm0f1"]
+[ext_resource type="PackedScene" uid="uid://bis66f4o33uk3" path="res://src/components/hitbox_component.tscn" id="2_2kwvs"]
+[ext_resource type="PackedScene" uid="uid://duvuuoelo51lm" path="res://src/components/health_component.tscn" id="3_2kwvs"]
+
 [node name="Enemy" type="CharacterBody2D" unique_id=409778115]
 
 [node name="Visuals" type="Node2D" parent="." unique_id=575026311]
@@ -13,5 +17,11 @@
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=511760713]
 
 [node name="Components" type="Node2D" parent="." unique_id=150000459]
+
+[node name="HurtboxComponent" parent="Components" unique_id=1721264014 instance=ExtResource("1_dm0f1")]
+
+[node name="HitboxComponent" parent="Components" unique_id=926265512 instance=ExtResource("2_2kwvs")]
+
+[node name="HealthComponent" parent="Components" unique_id=76606513 instance=ExtResource("3_2kwvs")]
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=911862284]
