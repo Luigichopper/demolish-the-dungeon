@@ -31,19 +31,40 @@ y_sort_enabled = true
 [node name="TileMapWall" parent="SubViewportContainer/SubViewport/LowResGame/TestTileMap" index="0" unique_id=246485823 node_paths=PackedStringArray("high_res_camera")]
 high_res_camera = NodePath("../../../../../HighResCamera")
 
-[node name="Player" parent="SubViewportContainer/SubViewport/LowResGame" unique_id=625817118 node_paths=PackedStringArray("high_res_camera") instance=ExtResource("2_cu5cr")]
+[node name="Player" parent="SubViewportContainer/SubViewport/LowResGame" unique_id=625817118 node_paths=PackedStringArray("low_res_camera", "state_label") instance=ExtResource("2_cu5cr")]
 light_mask = 2
 y_sort_enabled = true
-high_res_camera = NodePath("../../../../HighResCamera")
+low_res_camera = NodePath("../LowResCamera")
+state_label = NodePath("../../../../HighResCamera/UI/CurrentPlayerStateLabel")
 
 [node name="LowResCamera" type="Camera2D" parent="SubViewportContainer/SubViewport/LowResGame" unique_id=1866655051 node_paths=PackedStringArray("follow_target")]
+zoom = Vector2(4, 4)
 script = ExtResource("3_47cyu")
 follow_target = NodePath("../Player")
 
 [node name="HighResCamera" type="Camera2D" parent="." unique_id=933152731 node_paths=PackedStringArray("player", "sub_viewport_container")]
-zoom = Vector2(4, 4)
 script = ExtResource("4_3qrmw")
 player = NodePath("../SubViewportContainer/SubViewport/LowResGame/Player")
 sub_viewport_container = NodePath("../SubViewportContainer")
+
+[node name="UI" type="CanvasLayer" parent="HighResCamera" unique_id=2036639118]
+
+[node name="CurrentPlayerStateLabel" type="Label" parent="HighResCamera/UI" unique_id=1126344459]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -194.0
+offset_top = -111.0
+offset_right = -66.0
+offset_bottom = -66.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 32
+text = "Running"
+horizontal_alignment = 1
 
 [editable path="SubViewportContainer/SubViewport/LowResGame/TestTileMap"]
