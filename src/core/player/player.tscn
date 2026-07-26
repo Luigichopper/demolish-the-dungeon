@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bis66f4o33uk3" path="res://src/components/hitbox_component.tscn" id="4_1wmu1"]
 [ext_resource type="PackedScene" uid="uid://duvuuoelo51lm" path="res://src/components/health_component.tscn" id="5_ae1a8"]
 [ext_resource type="Script" uid="uid://xxa7w1egy33g" path="res://src/core/states/state_machine.gd" id="6_1wmu1"]
-[ext_resource type="Script" uid="uid://bkbrem5tswsgi" path="res://src/core/player/states/idle_state.gd" id="8_31nn7"]
-[ext_resource type="Script" uid="uid://cmbxmq3kew2oo" path="res://src/core/player/states/running_state.gd" id="9_52oaf"]
-[ext_resource type="Script" uid="uid://dpb0nud614v67" path="res://src/core/player/states/hurt_state.gd" id="10_52oaf"]
-[ext_resource type="Script" uid="uid://burt51ajjbl8j" path="res://src/core/player/states/death_state.gd" id="11_ey5gq"]
+[ext_resource type="Script" uid="uid://bkbrem5tswsgi" path="res://src/core/states/player_states/idle_state.gd" id="8_31nn7"]
+[ext_resource type="Script" uid="uid://cmbxmq3kew2oo" path="res://src/core/states/player_states/running_state.gd" id="9_52oaf"]
+[ext_resource type="Script" uid="uid://dpb0nud614v67" path="res://src/core/states/player_states/hurt_state.gd" id="10_52oaf"]
+[ext_resource type="Script" uid="uid://burt51ajjbl8j" path="res://src/core/states/player_states/death_state.gd" id="11_ey5gq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihbif"]
 size = Vector2(7.5, 3.5)

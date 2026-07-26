@@ -38,11 +38,12 @@ low_res_camera = NodePath("../LowResCamera")
 state_label = NodePath("../../../../HighResCamera/UI/CurrentPlayerStateLabel")
 
 [node name="LowResCamera" type="Camera2D" parent="SubViewportContainer/SubViewport/LowResGame" unique_id=1866655051 node_paths=PackedStringArray("follow_target")]
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
 script = ExtResource("3_47cyu")
 follow_target = NodePath("../Player")
 
 [node name="HighResCamera" type="Camera2D" parent="." unique_id=933152731 node_paths=PackedStringArray("player", "sub_viewport_container")]
+zoom = Vector2(2, 2)
 script = ExtResource("4_3qrmw")
 player = NodePath("../SubViewportContainer/SubViewport/LowResGame/Player")
 sub_viewport_container = NodePath("../SubViewportContainer")
